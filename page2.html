@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do You Like Me? 💜</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page2{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+text-align:center;
+}
+
+.card{
+
+width:90%;
+max-width:430px;
+
+padding:35px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+box-shadow:
+0 0 40px rgba(255,255,255,.35);
+
+animation:fadeCard 1.5s;
+
+}
+
+.question{
+
+font-size:32px;
+
+font-weight:bold;
+
+color:white;
+
+text-shadow:
+0 0 12px white,
+0 0 22px hotpink,
+0 0 35px violet;
+
+opacity:0;
+
+animation:fadeText 2s forwards;
+
+}
+
+.buttons{
+
+margin-top:35px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+opacity:0;
+
+animation:popText 1.5s forwards;
+
+animation-delay:2.5s;
+
+}
+
+button{
+
+padding:18px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+background:linear-gradient(45deg,#ff79c6,#ff9ff3,#d980fa);
+
+color:white;
+
+font-weight:bold;
+
+box-shadow:
+0 0 20px pink;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+box-shadow:
+0 0 30px white;
+
+}
+
+.message{
+
+margin-top:35px;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:white;
+
+text-shadow:
+0 0 10px white;
+
+opacity:0;
+
+animation:fadeText 2s forwards;
+
+animation-delay:4.5s;
+
+}
+
+</style>
+
+</head>
+
+<body class="page2">
+
+<div class="floating-emojis">
+
+<span>💜</span>
+<span>🩷</span>
+<span>🌸</span>
+<span>💕</span>
+<span>✨</span>
+<span>🦋</span>
+<span>💖</span>
+<span>🌷</span>
+
+</div>
+
+<div class="card">
+
+<h1 class="question">
+💜 Do you like me really???<br>
+Wahh... I mean...<br>
+Mwahhh 😳🩷
+</h1>
+
+<div class="buttons">
+
+<button onclick="nextPage()">
+🩷 Mwahh Yes
+</button>
+
+<button onclick="nextPage()">
+💜 Absolutely Yes
+</button>
+
+</div>
+
+<p class="message">
+I know!! 🥹💕<br><br>
+You came into my life and there is no going back...<br><br>
+So yeahhh... You should love me no matter what!! 💜🩷✨
+</p>
+
+</div>
+
+<script>
+  function nextPage(){
+
+document.body.style.transition="0.8s";
+
+document.body.style.opacity="0";
+
+setTimeout(function(){
+
+window.location.href="page3.html";
+
+},800);
+
+}
+
+/* Small sparkle effect when pressing buttons */
+
+const buttons=document.querySelectorAll("button");
+
+buttons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+btn.style.transform="scale(.92)";
+
+setTimeout(()=>{
+
+btn.style.transform="scale(1.05)";
+
+},120);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
