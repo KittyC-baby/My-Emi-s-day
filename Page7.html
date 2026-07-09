@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forever 💜</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+
+margin:0;
+
+overflow:hidden;
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(-45deg,#ffb7e8,#d8a7ff,#ff9bd4,#c68bff);
+
+background-size:400% 400%;
+
+animation:bgMove 15s infinite ease;
+
+font-family:Poppins,sans-serif;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+text-align:center;
+
+z-index:5;
+
+}
+
+h1{
+
+color:white;
+
+font-size:34px;
+
+text-shadow:
+
+0 0 10px white,
+
+0 0 20px hotpink,
+
+0 0 35px violet;
+
+animation:fade 2s forwards;
+
+opacity:0;
+
+}
+
+@keyframes fade{
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+.bouquet{
+
+font-size:110px;
+
+margin-top:20px;
+
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+.slider{
+
+position:absolute;
+
+bottom:140px;
+
+display:flex;
+
+gap:20px;
+
+animation:moveLeft 18s linear infinite;
+
+}
+
+.slider img{
+
+width:120px;
+
+height:120px;
+
+border-radius:20px;
+
+object-fit:cover;
+
+box-shadow:0 0 20px white;
+
+}
+
+@keyframes moveLeft{
+
+from{
+
+transform:translateX(120vw);
+
+}
+
+to{
+
+transform:translateX(-140vw);
+
+}
+
+}
+
+.rain{
+
+position:absolute;
+
+top:-10%;
+
+font-size:28px;
+
+animation:fall linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-10vh);
+
+}
+
+100%{
+
+transform:translateY(120vh);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+
+Byeeee byeeeeee loveee... 💜<br>
+
+Take care naaa...<br>
+
+Mwahhhhh 😘🩷
+
+</h1>
+
+<div class="bouquet">
+
+💐
+
+</div>
+
+</div>
+
+<div class="slider">
+
+<img src="assets/photo1.jpg">
+
+<img src="assets/photo2.jpg">
+
+<img src="assets/photo3.jpg">
+
+<img src="assets/photo4.jpg">
+
+</div>
+
+<script>
+  /* Kiss emoji rain */
+
+const emojis = ["😘","💋","🩷","💜","💕","🌸","✨","🦋"];
+
+function createRain(){
+
+const rain = document.createElement("div");
+
+rain.className = "rain";
+
+rain.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+rain.style.left = Math.random()*100 + "vw";
+
+rain.style.animationDuration = (3 + Math.random()*4) + "s";
+
+rain.style.fontSize = (20 + Math.random()*20) + "px";
+
+document.body.appendChild(rain);
+
+setTimeout(()=>{
+
+rain.remove();
+
+},7000);
+
+}
+
+setInterval(createRain,250);
+
+/* Keep bouquet glowing */
+
+setInterval(()=>{
+
+document.querySelector(".bouquet").style.filter=
+
+"drop-shadow(0 0 25px white) drop-shadow(0 0 35px hotpink)";
+
+setTimeout(()=>{
+
+document.querySelector(".bouquet").style.filter="none";
+
+},900);
+
+},1500);
+
+</script>
+
+</body>
+
+</html>
