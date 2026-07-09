@@ -1,65 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday 🎂</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page3{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+overflow:hidden;
+}
+
+.card{
+width:92%;
+max-width:430px;
+padding:35px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(18px);
+border-radius:30px;
+box-shadow:0 0 40px rgba(255,255,255,.4);
+position:relative;
+}
+
+#typing{
+font-size:24px;
+font-weight:bold;
+color:white;
+text-shadow:
+0 0 12px white,
+0 0 25px hotpink,
+0 0 35px violet;
+min-height:170px;
+line-height:1.8;
+}
+
+.cake{
+font-size:95px;
+margin-top:25px;
+animation:bounce 2s infinite;
+transition:.6s;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+.candles{
+font-size:28px;
+margin-top:-18px;
+animation:glow 1s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:
+0 0 10px gold,
+0 0 20px orange,
+0 0 35px yellow;
+}
+to{
+text-shadow:
+0 0 25px gold,
+0 0 40px orange,
+0 0 60px yellow;
+}
+}
+
+.tap{
+margin-top:25px;
+font-size:18px;
+color:white;
+opacity:0;
+animation:fadeText 2s forwards;
+animation-delay:7s;
+}
+
+.smoke{
+font-size:28px;
+opacity:0;
+margin-top:-10px;
+}
+
+#blowBtn{
+margin-top:20px;
+padding:15px 30px;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:linear-gradient(45deg,#ff79c6,#ff9ff3,#d980fa);
+color:white;
+box-shadow:0 0 20px pink;
+transition:.3s;
+}
+
+#blowBtn:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px white;
+}
+
+#blowBtn:disabled{
+opacity:.8;
+cursor:default;
+}
+
+</style>
+
+</head>
+
+<body class="page3">
+
+<div class="floating-emojis">
+
+<span>🎈</span>
+<span>💜</span>
+<span>🩷</span>
+<span>🌸</span>
+<span>✨</span>
+<span>🎂</span>
+<span>💕</span>
+<span>🦋</span>
+
+</div>
+
+<div class="card">
+
+<div id="typing"></div>
+
+<div class="candles" id="flames">
+🕯️🕯️🕯️
+</div>
+
+<div class="cake">
+🎂
+</div>
+
+<div class="smoke" id="smoke">
+💨💨💨
+</div>
+
+<p class="tap">
+🕯️ Tap the button below to blow out the birthday candles 🎂
+</p>
+
+<button id="blowBtn">
+💨 Blow the Candles
+</button>
+
+</div>
+
 <script>
+
 const message =
 "Happie birthday my nong tee 🩷... This is the happiest day... You know why??? Causeeeee it's my special person's birthday 🎂🎈";
 
 let i = 0;
 
-function typeWriter() {
-
-    if (i < message.length) {
-
+function typeWriter(){
+    if(i < message.length){
         document.getElementById("typing").innerHTML += message.charAt(i);
-
         i++;
-
-        setTimeout(typeWriter, 50);
-
+        setTimeout(typeWriter,50);
     }
-
 }
 
 typeWriter();
 
 let blown = false;
 
-// First tap: Blow out the candles
-document.body.addEventListener("click", function () {
+document.getElementById("blowBtn").addEventListener("click",function(e){
 
-    if (!blown) {
+    e.stopPropagation();
 
-        blown = true;
+    if(blown) return;
 
-        document.getElementById("flames").style.opacity = "0";
+    blown = true;
 
-        let smoke = document.getElementById("smoke");
+    document.getElementById("flames").style.opacity="0";
 
-        smoke.style.opacity = "1";
-        smoke.style.transition = ".8s";
-        smoke.style.transform = "translateY(-35px)";
+    let smoke=document.getElementById("smoke");
 
-        document.querySelector(".cake").style.transform = "scale(1.12)";
-        document.querySelector(".cake").style.filter =
-            "drop-shadow(0 0 25px gold)";
+    smoke.style.opacity="1";
+    smoke.style.transition=".8s";
+    smoke.style.transform="translateY(-35px)";
 
-    }
+    document.querySelector(".cake").style.transform="scale(1.12)";
+    document.querySelector(".cake").style.filter="drop-shadow(0 0 25px gold)";
+
+    this.innerHTML="🎉 Candles Blown!";
+    this.disabled=true;
+
+});
+
+document.body.addEventListener("click",function(){
+
+    if(!blown) return;
+
+    document.body.style.transition="1s";
+    document.body.style.opacity="0";
+
+    setTimeout(function(){
+        window.location.href="page4.html";
+    },900);
 
 });
 
-// Double tap: Go to next page
-document.body.addEventListener("dblclick", function () {
-
-    if (blown) {
-
-        document.body.style.transition = "1s";
-        document.body.style.opacity = "0";
-
-        setTimeout(function () {
-
-            window.location.href = "page4.html";
-
-        }, 900);
-
-    }
-
-});
 </script>
+
+</body>
+</html>
