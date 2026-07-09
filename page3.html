@@ -1,241 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday 🎂</title>
-
-<link rel="stylesheet" href="style.css">
-
-<style>
-
-.page3{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-padding:20px;
-
-overflow:hidden;
-
-}
-
-.card{
-
-width:92%;
-
-max-width:430px;
-
-padding:35px;
-
-background:rgba(255,255,255,.18);
-
-backdrop-filter:blur(18px);
-
-border-radius:30px;
-
-box-shadow:0 0 40px rgba(255,255,255,.4);
-
-position:relative;
-
-}
-
-#typing{
-
-font-size:24px;
-
-font-weight:bold;
-
-color:white;
-
-text-shadow:
-
-0 0 12px white,
-
-0 0 25px hotpink,
-
-0 0 35px violet;
-
-min-height:170px;
-
-line-height:1.8;
-
-}
-
-.cake{
-
-font-size:95px;
-
-margin-top:25px;
-
-animation:bounce 2s infinite;
-
-transition:.6s;
-
-}
-
-@keyframes bounce{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-12px);
-
-}
-
-}
-
-.candles{
-
-font-size:28px;
-
-margin-top:-18px;
-
-animation:glow 1s infinite alternate;
-
-}
-
-@keyframes glow{
-
-from{
-
-text-shadow:
-
-0 0 10px gold,
-
-0 0 20px orange,
-
-0 0 35px yellow;
-
-}
-
-to{
-
-text-shadow:
-
-0 0 25px gold,
-
-0 0 40px orange,
-
-0 0 60px yellow;
-
-}
-
-}
-
-.tap{
-
-margin-top:30px;
-
-font-size:18px;
-
-color:white;
-
-opacity:0;
-
-animation:fadeText 2s forwards;
-
-animation-delay:7s;
-
-}
-
-.smoke{
-
-font-size:28px;
-
-opacity:0;
-
-margin-top:-10px;
-
-}
-
-</style>
-
-</head>
-
-<body class="page3">
-
-<div class="floating-emojis">
-
-<span>🎈</span>
-
-<span>💜</span>
-
-<span>🩷</span>
-
-<span>🌸</span>
-
-<span>✨</span>
-
-<span>🎂</span>
-
-<span>💕</span>
-
-<span>🦋</span>
-
-</div>
-
-<div class="card">
-
-<div id="typing"></div>
-
-<div class="candles" id="flames">
-
-🕯️🕯️🕯️
-
-</div>
-
-<div class="cake">
-
-🎂
-
-</div>
-
-<div class="smoke" id="smoke">
-
-💨💨💨
-
-</div>
-
-<p class="tap">
-
-👆 Tap on the screen to blow the candle
-
-</p>
-
-</div>
-
 <script>
-  const message =
+const message =
 "Happie birthday my nong tee 🩷... This is the happiest day... You know why??? Causeeeee it's my special person's birthday 🎂🎈";
 
 let i = 0;
 
-function typeWriter(){
+function typeWriter() {
 
-if(i < message.length){
+    if (i < message.length) {
 
-document.getElementById("typing").innerHTML += message.charAt(i);
+        document.getElementById("typing").innerHTML += message.charAt(i);
 
-i++;
+        i++;
 
-setTimeout(typeWriter,50);
+        setTimeout(typeWriter, 50);
 
-}
+    }
 
 }
 
@@ -243,48 +22,44 @@ typeWriter();
 
 let blown = false;
 
-document.body.addEventListener("click",function(){
+// First tap: Blow out the candles
+document.body.addEventListener("click", function () {
 
-if(!blown){
+    if (!blown) {
 
-blown = true;
+        blown = true;
 
-/* Hide flames */
+        document.getElementById("flames").style.opacity = "0";
 
-document.getElementById("flames").style.opacity="0";
+        let smoke = document.getElementById("smoke");
 
-/* Show smoke */
+        smoke.style.opacity = "1";
+        smoke.style.transition = ".8s";
+        smoke.style.transform = "translateY(-35px)";
 
-let smoke=document.getElementById("smoke");
+        document.querySelector(".cake").style.transform = "scale(1.12)";
+        document.querySelector(".cake").style.filter =
+            "drop-shadow(0 0 25px gold)";
 
-smoke.style.opacity="1";
-
-smoke.style.transition=".8s";
-
-smoke.style.transform="translateY(-35px)";
-
-/* Cake celebration */
-
-document.querySelector(".cake").style.transform="scale(1.12)";
-
-document.querySelector(".cake").style.filter=
-"drop-shadow(0 0 25px gold)";
-
-}else{
-
-document.body.style.transition="1s";
-
-document.body.style.opacity="0";
-
-setTimeout(function(){
-
-window.location.href="page4.html";
-
-},900);
-
-}
+    }
 
 });
-  </script>
-</body>
-</html>
+
+// Double tap: Go to next page
+document.body.addEventListener("dblclick", function () {
+
+    if (blown) {
+
+        document.body.style.transition = "1s";
+        document.body.style.opacity = "0";
+
+        setTimeout(function () {
+
+            window.location.href = "page4.html";
+
+        }, 900);
+
+    }
+
+});
+</script>
