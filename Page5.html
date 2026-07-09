@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Letter 💜</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+
+margin:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+background:linear-gradient(-45deg,#ffb5e8,#d7a6ff,#ff9fd6,#c78cff);
+
+background-size:400% 400%;
+
+animation:bgMove 15s ease infinite;
+
+font-family:Poppins,sans-serif;
+
+overflow:hidden;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.card{
+
+width:90%;
+
+max-width:430px;
+
+padding:28px;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(20px);
+
+box-shadow:0 0 35px rgba(255,255,255,.4);
+
+}
+
+.title{
+
+text-align:center;
+
+font-size:32px;
+
+color:white;
+
+font-weight:bold;
+
+text-shadow:
+
+0 0 10px white,
+
+0 0 20px hotpink,
+
+0 0 35px violet;
+
+margin-bottom:20px;
+
+}
+
+#letter{
+
+color:white;
+
+font-size:18px;
+
+line-height:1.8;
+
+text-shadow:0 0 8px white;
+
+min-height:300px;
+
+white-space:pre-wrap;
+
+}
+
+.tap{
+
+margin-top:20px;
+
+text-align:center;
+
+font-size:18px;
+
+color:white;
+
+opacity:0;
+
+animation:fadeIn 2s forwards;
+
+animation-delay:24s;
+
+}
+
+@keyframes fadeIn{
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="floating-emojis">
+
+<span>💜</span>
+
+<span>🩷</span>
+
+<span>🌸</span>
+
+<span>💕</span>
+
+<span>✨</span>
+
+<span>🦋</span>
+
+<span>💖</span>
+
+<span>🌷</span>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+
+💌 My Letter To You 💌
+
+</div>
+
+<div id="letter"></div>
+
+<p class="tap">
+
+💕 Tap anywhere to continue 💕
+
+</p>
+
+</div>
+
+<script>
+
+const message = `Happiest birthday my special girl!! 💜
+
+I loveee you so much naa... and I wish you all the happiness in your life!!
+
+Stay happy forever...
+
+I promise I'll come there to take you with me...
+
+So adjust for now my baby!!
+
+Be strong...
+
+If something happens... come to me naa...
+
+Please don't leave me...
+
+I'm scared of losing you...
+
+You are the most wonderful thing that happened to me this year...
+
+I'm so lucky to have you... 💕
+
+`; 
+  message += `
+
+And about our relationship!!! 🤭🤗
+
+Don't ask me!!
+
+We are soulmates... 💜
+
+You're mine!!
+
+You're nothing less than my future husband and more than any friend I could ever ask for.
+
+You are so special to me, my dear. 💕
+
+I wanted to celebrate our month anniversary...
+
+But I forgot the date... hehe 🤭
+
+So let's take June 8 as our anniversary because we went on a dare together...
+
+Remember...? 🥹
+
+I was blushing so much that day...
+
+Being with you gives me all the happiness I could ever ask for.
+
+So please stay happy with me. 💗
+
+I know I'm only the bare minimum sometimes...
+
+But I still want to see a little smile on your beautiful lips.
+
+Take care of yourself...
+
+Soon...
+
+I'll come there to take you home.
+
+I promise. 🫂
+
+So once again...
+
+🎂 Happie Birthday My Nong Teetee!! 🎂
+
+I love you soooo much!! 💜🩷✨`;
+
+let index = 0;
+
+function typeLetter(){
+
+if(index < message.length){
+
+document.getElementById("letter").innerHTML += message.charAt(index);
+
+index++;
+
+setTimeout(typeLetter,35);
+
+}
+
+}
+
+typeLetter();
+
+let clicked = false;
+
+document.body.addEventListener("click",function(){
+
+if(clicked) return;
+
+clicked = true;
+
+document.body.style.transition="1s";
+
+document.body.style.opacity="0";
+
+setTimeout(function(){
+
+window.location.href="page6.html";
+
+},1000);
+
+});
+
+</script>
+
+</body>
+
+</html>
