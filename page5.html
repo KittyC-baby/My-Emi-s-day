@@ -14,121 +14,77 @@
 <style>
 
 body{
-
 margin:0;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 height:100vh;
-
 background:linear-gradient(-45deg,#ffb5e8,#d7a6ff,#ff9fd6,#c78cff);
-
 background-size:400% 400%;
-
 animation:bgMove 15s ease infinite;
-
 font-family:Poppins,sans-serif;
-
 overflow:hidden;
-
 }
 
 @keyframes bgMove{
-
 0%{background-position:0% 50%;}
-
 50%{background-position:100% 50%;}
-
 100%{background-position:0% 50%;}
-
 }
 
 .card{
-
 width:90%;
-
 max-width:430px;
-
 padding:28px;
-
 border-radius:30px;
-
 background:rgba(255,255,255,.18);
-
 backdrop-filter:blur(20px);
-
 box-shadow:0 0 35px rgba(255,255,255,.4);
-
 }
 
 .title{
-
 text-align:center;
-
 font-size:32px;
-
 color:white;
-
 font-weight:bold;
-
 text-shadow:
-
 0 0 10px white,
-
 0 0 20px hotpink,
-
 0 0 35px violet;
-
 margin-bottom:20px;
-
 }
 
+/* Cute paper note */
 #letter{
-
-color:white;
-
+background:#fffdf8;
+color:#555;
+padding:20px;
+border-radius:18px;
+border:2px dashed #ffb6d9;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 font-size:18px;
-
 line-height:1.8;
-
-text-shadow:0 0 8px white;
-
 min-height:300px;
-
+max-height:350px;
+overflow-y:auto;
 white-space:pre-wrap;
-
+font-family:"Comic Sans MS",cursive;
 }
 
 .tap{
-
 margin-top:20px;
-
 text-align:center;
-
 font-size:18px;
-
 color:white;
-
 opacity:0;
-
 animation:fadeIn 2s forwards;
-
 animation-delay:24s;
-
 }
 
 @keyframes fadeIn{
-
 to{
-
 opacity:1;
-
 }
-
 }
 
 </style>
@@ -138,46 +94,33 @@ opacity:1;
 <body>
 
 <div class="floating-emojis">
-
 <span>💜</span>
-
 <span>🩷</span>
-
 <span>🌸</span>
-
 <span>💕</span>
-
 <span>✨</span>
-
 <span>🦋</span>
-
 <span>💖</span>
-
 <span>🌷</span>
-
 </div>
 
 <div class="card">
 
 <div class="title">
-
 💌 My Letter To You 💌
-
 </div>
 
 <div id="letter"></div>
 
 <p class="tap">
-
 💕 Tap anywhere to continue 💕
-
 </p>
 
 </div>
 
 <script>
 
-const message = `Happiest birthday my special girl!! 💜
+let message = `Happiest birthday my special girl!! 💜
 
 I loveee you so much naa... and I wish you all the happiness in your life!!
 
@@ -199,8 +142,9 @@ You are the most wonderful thing that happened to me this year...
 
 I'm so lucky to have you... 💕
 
-`; 
-  message += `
+`;
+
+message += `
 
 And about our relationship!!! 🤭🤗
 
@@ -249,17 +193,11 @@ I love you soooo much!! 💜🩷✨`;
 let index = 0;
 
 function typeLetter(){
-
 if(index < message.length){
-
 document.getElementById("letter").innerHTML += message.charAt(index);
-
 index++;
-
 setTimeout(typeLetter,35);
-
 }
-
 }
 
 typeLetter();
@@ -267,21 +205,13 @@ typeLetter();
 let clicked = false;
 
 document.body.addEventListener("click",function(){
-
 if(clicked) return;
-
 clicked = true;
-
 document.body.style.transition="1s";
-
 document.body.style.opacity="0";
-
 setTimeout(function(){
-
 window.location.href="page6.html";
-
 },1000);
-
 });
 
 </script>
