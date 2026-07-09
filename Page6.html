@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Last Surprise 🎁</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+
+margin:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+overflow:hidden;
+
+background:linear-gradient(-45deg,#ffb5e8,#d7a6ff,#ff9fd6,#c78cff);
+
+background-size:400% 400%;
+
+animation:bgMove 15s ease infinite;
+
+font-family:Poppins,sans-serif;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.card{
+
+width:90%;
+
+max-width:430px;
+
+padding:30px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(20px);
+
+border-radius:30px;
+
+box-shadow:0 0 35px rgba(255,255,255,.35);
+
+text-align:center;
+
+}
+
+#text{
+
+color:white;
+
+font-size:20px;
+
+line-height:1.8;
+
+text-shadow:
+
+0 0 10px white,
+
+0 0 20px hotpink;
+
+min-height:180px;
+
+white-space:pre-wrap;
+
+}
+
+.gift{
+
+font-size:100px;
+
+margin-top:20px;
+
+cursor:pointer;
+
+display:none;
+
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+#photo{
+
+display:none;
+
+margin-top:20px;
+
+width:220px;
+
+height:220px;
+
+object-fit:cover;
+
+border-radius:25px;
+
+box-shadow:0 0 25px white;
+
+}
+
+#lastMessage{
+
+margin-top:20px;
+
+color:white;
+
+font-size:18px;
+
+line-height:1.8;
+
+display:none;
+
+text-shadow:0 0 10px white;
+
+}
+
+.tap{
+
+margin-top:20px;
+
+color:white;
+
+display:none;
+
+font-size:18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="floating-emojis">
+
+<span>💜</span>
+
+<span>🩷</span>
+
+<span>🌸</span>
+
+<span>✨</span>
+
+<span>🎁</span>
+
+<span>💕</span>
+
+<span>🦋</span>
+
+<span>💖</span>
+
+</div>
+
+<div class="card">
+
+<div id="text"></div>
+
+<div class="gift" id="gift">
+
+🎁
+
+</div>
+
+<img src="assets/me.jpg" id="photo">
+
+<div id="lastMessage">
+
+Yeah... that's me... 🥹💜
+
+I'll always be there for you forever, my baby!!
+
+Have the happiest birthday!!
+
+Me loveee you sooo much!! 🩷✨
+
+</div>
+
+<div class="tap" id="tapText">
+
+💜 Tap anywhere for the last gift 💜
+
+</div>
+
+<script>
+
+const intro =
+"I hope you had great memories with this special gift... 💜\n\nSo we finally came to the end...\n\nYou know I gave you a gift that lasts forever... 🥹\n\nDouble tap the gift box below to reveal it...";
+
+let i = 0;
+  function typeIntro(){
+
+if(i < intro.length){
+
+document.getElementById("text").innerHTML += intro.charAt(i);
+
+i++;
+
+setTimeout(typeIntro,40);
+
+}else{
+
+document.getElementById("gift").style.display="block";
+
+}
+
+}
+
+typeIntro();
+
+let opened=false;
+
+document.getElementById("gift").addEventListener("dblclick",function(){
+
+if(opened) return;
+
+opened=true;
+
+this.innerHTML="🎁✨";
+
+this.style.transform="scale(1.1)";
+
+document.getElementById("photo").style.display="block";
+
+const finalText =
+"Yeah... that's me... 🥹💜\n\nI'll always be there for you forever, my baby!!\n\nHave a wonderful birthday!!\n\nMe loveee you sooo much!! 🩷✨";
+
+let j=0;
+
+document.getElementById("lastMessage").style.display="block";
+
+function typeFinal(){
+
+if(j<finalText.length){
+
+document.getElementById("lastMessage").innerHTML += finalText.charAt(j);
+
+j++;
+
+setTimeout(typeFinal,35);
+
+}else{
+
+document.getElementById("tapText").style.display="block";
+
+}
+
+}
+
+typeFinal();
+
+});
+
+document.body.addEventListener("click",function(e){
+
+if(!opened) return;
+
+if(e.target.id==="gift") return;
+
+document.body.style.transition="opacity 1s ease";
+
+document.body.style.opacity="0";
+
+setTimeout(function(){
+
+window.location.href="page7.html";
+
+},1000);
+
+});
+
+</script>
+
+</body>
+
+</html>
